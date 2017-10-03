@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+<a href="{% url "userCreationURL" %}"><button>Create User</button></a>
+{#<a href="{% url "userDeleteURL" %}"><button>Delete User</button>#}
+        <h3>BLOG:</h3>
+    <table class="table dataTable">
+
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <form method="post" action="">
+                    <input hidden name="user_info" value="{{ user.id }}" />
+
+                    <button type="submit">Delete User</button>
+                        </form>
+
+                </td>
+
+             <td>
+                   <a href="{% url "userDeleteURL" user.id %}">Delete</a>
+
+                </td>
+
+            </tr>
+        {%  endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
