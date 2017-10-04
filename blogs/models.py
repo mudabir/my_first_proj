@@ -7,3 +7,8 @@ class Blogs(models.Model):
     LastName = models.CharField(max_length=200)
     UserName = models.CharField(max_length=200)
     Email = models.CharField(max_length=100, null=True, blank=True)
+
+class UserProfile(models.Model):
+    UserName =  models.ForeignKey(User)
+    PhoneNumber = models.integer(max_length=100)
+    Address = models.CharField(max_length=200)

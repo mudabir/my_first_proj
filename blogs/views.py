@@ -4,6 +4,9 @@ from django.views.generic.edit import View
 from blogs.models import Blogs
 from blog.forms import BlogForm
 from django.contrib.auth.models import User
+from blogs.models import UserProfile
+# from blog.forms import UserProfile
+
 
 class createUserView(View):
     def get(self,request):
@@ -54,3 +57,25 @@ class DeleteView(View):
     def get(self,request, user_id):
         User.objects.get(id=user_id).delete()
         return HttpResponseRedirect('/list')
+
+class UserProfileView(View):
+    def get(self,request):
+        def post(self, request):
+            form = UserProfile(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                UserName = data['user_name']
+                PhoneNumber = data['phone_number']
+                Address= data['address']
+
+                print "post"
+                User.objects.create(
+                    user_name=UserName,
+                    phone_number=PhoneNumber,
+                    address=Address,
+
+                )
+
+                return HttpResponseRedirect('/list/')
+
+            return render(request, 'Blog_templates/Blog.html', {"form": form})
