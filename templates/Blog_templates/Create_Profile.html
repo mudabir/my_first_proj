@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
-
 <head>
 </head>
 <body>
 
 <h3>Create User Profile:</h3>
-
-{#<select>#}
-{#    {% for form in forms %}#}
-{#        <option value={{ form.id }}>{{ form.first_name }}#}
-{#    {% endfor %}#}
-{##}
-{#</select>#}
 <form method="post" action="">
     {{Users.as_p }}
     <input type="submit" value="save">

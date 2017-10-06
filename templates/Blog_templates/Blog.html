@@ -5,7 +5,9 @@
 </head>
 <body>
 <a href="{% url "userCreationURL" %}"><button>Create User</button></a>
-{#<a href="{% url "userDeleteURL" %}"><button>Delete User</button>#}
+<a href="{% url "createProfileURL" %}"><button>Ceate User Profile</button></a>
+<a href="{% url "createproductURL" %}"><button>Ceate Product Purchase</button></a>
+
 <h3>USERS:</h3>
 <table class="table dataTable">
 
@@ -28,17 +30,12 @@
             <td>
                 <form method="post" action="">
                     <input hidden name="user_info" value="{{ user.id }}" />
-
                     <button type="submit">Delete User</button>
                 </form>
-
             </td>
-
             <td>
                 <a href="{% url "userDeleteURL" user.id %}">Delete</a>
-
             </td>
-
         </tr>
     {%  endfor %}
     </tbody>
