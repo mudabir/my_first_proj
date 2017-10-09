@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style type="text/css">
+
+        #box {
+            width: 1000px;
+            height: 200px;
+            border-width: 4px;
+            border-style: solid;
+            border-color: cornsilk;
+            background: #CCCCCC;
+            display: inline-block;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+</head>
+<body>
+
+<a href="{% url "userregisterURL" %}"><button>Create Users</button></a>
+<h3>Users Details:</h3>
+<hr />
+{% for user in users %}
+    <div id="box">
+        <table>
+            <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Passwords</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}{{ user.id }}</td>
+                <td>{{ user.password }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{%  endfor %}
+</body>
+</html>

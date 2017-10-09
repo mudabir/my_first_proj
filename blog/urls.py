@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^productpurchase/$',ProductPurchaseView.as_view(), name='productpurchaseURL'),
     url(r'^createproduct/$',CreateProductView.as_view(), name='createproductURL'),
     url(r'^products/$',ProductsView.as_view(), name='productURL'),
-
-
+    url(r'^userregistration/$',UserRegisterationView.as_view(), name='userregisterURL'),
+    url(r'^Users_list/$',UsersView.as_view(), name='Users_listURL'),
 
 ]

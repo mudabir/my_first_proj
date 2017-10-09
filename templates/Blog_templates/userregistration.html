@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style type="text/css">
+
+        #box {
+            width: 500px;
+            height: 300px;
+            border-width: 4px;
+            border-style: solid;
+            border-color: cornsilk;
+            background: #CCCCCC;
+            display: inline-block;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <h3>Create Users:</h3>
+    <div id="box">
+    <form method="post" action="">
+
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+    </div>
+</body>
+</html>

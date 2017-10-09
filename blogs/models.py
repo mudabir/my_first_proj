@@ -7,6 +7,7 @@ class UserProfile(models.Model):
     phone_number = models.IntegerField(default=0)
     address = models.CharField(max_length=200)
 
+
 class ProductPurchase(models.Model):
     image = models.ImageField(upload_to = 'pic_folder/', default = 'pic_folder/None/no-img.jpg')
     title =  models.CharField(max_length=200)
@@ -14,4 +15,7 @@ class ProductPurchase(models.Model):
 
 class ExampleModel(models.Model):
     model_pic = models.ImageField()
+
+# class UserRegistration(models.Model):
+#     user =  models.ForeignKey(User)
 
