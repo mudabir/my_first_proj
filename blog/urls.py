@@ -15,5 +15,12 @@ urlpatterns = [
     url(r'^products/$',ProductsView.as_view(), name='productURL'),
     url(r'^userregistration/$',UserRegisterationView.as_view(), name='userregisterURL'),
     url(r'^Users_list/$',UsersView.as_view(), name='Users_listURL'),
+    url(r'^login/$',LoginView.as_view(),name='LoginURL'),
+    url(r'^register/$', RegisterView.as_view(), name='RegisterURL'),
+
 
 ]
+from django.conf import settings
+from django.conf.urls.static import static
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

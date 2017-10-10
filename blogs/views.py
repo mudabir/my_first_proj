@@ -12,6 +12,7 @@ from blogs.models import ProductPurchase
 from blog.forms import ProductPurchaseForm
 from blog.forms import ImageUploadForm
 from blogs.models import ExampleModel
+from blog.forms import loginForm
 # from blogs.models import UserRegistration
 # from blog.forms import RegistartionForm
 
@@ -46,7 +47,10 @@ class BlogView(View):
         print "get"
         users = User.objects.all()
         profiles=UserProfile.objects.all()
-        return render(request,'Blog_templates/Blog.html',{'users':users,"profiles":profiles})
+
+
+        # return render(request,'Blog_templates/Blog.html',{'users':users,"profiles":profiles})
+        return render(request,'Blog_templates/index.html',{'users':users,"profiles":profiles})
 
     def post(self, request):
         # form =  BlogForm(request.POST)
@@ -209,6 +213,74 @@ class UsersView(View):
         users = User.objects.all()
         profiles=UserProfile.objects.all()
         return render(request,'Blog_templates/Users_list.html',{'users':users,"profiles":profiles})
+
+
+class LoginView(View):
+    def get(self,request):
+        form = loginForm()
+        return render(request,'Blog_templates/login.html',{"form" : form})
+
+    def post(self, request):
+        form = loginForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            Email = data['email']
+            Password = data['password']
+            print "post"
+            User.objects.create(
+                email=Email,
+                password=Password
+            )
+
+            return HttpResponseRedirect('/Users_list/')
+        return render(request, 'Blog_templates/login.html', {"form": form})
+
+
+class RegisterView(View):
+    def get(self,request):
+        form = BlogForm()
+        return render(request,'Blog_templates/register.html',{"form" : form})
+
+    def post(self, request):
+        form = BlogForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            FirstName = data['first_name']
+            LastName = data['last_name']
+            UserName = data['username']
+            Email = data['email']
+            Password=data['password']
+            print "post"
+            User.objects.create(
+                first_name=FirstName,
+                last_name=LastName,
+                username=UserName,
+                email=Email,
+                password=Password
+            )
+
+            return HttpResponseRedirect('/Users_list/')
+        return render(request, 'Blog_templates/login.html', {"form": form})
+
+class BlogView(View):
+    def get(self, request):
+            print "get"
+            users = User.objects.all()
+            profiles = UserProfile.objects.all()
+
+            # return render(request,'Blog_templates/Blog.html',{'users':users,"profiles":profiles})
+            return render(request, 'Blog_templates/index.html', {'users': users, "profiles": profiles})
+
+    def post(self, request):
+            # form =  BlogForm(request.POST)
+            id = request.POST.get('user_info')
+            print id
+            User.objects.get(id=id).delete()
+            return HttpResponseRedirect('/list')
+
+
+
+
 
 
 
