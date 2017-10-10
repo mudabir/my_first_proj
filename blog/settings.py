@@ -136,10 +136,10 @@ USE_TZ = True
 
 #this is required for admin    'django.core.context_processors.csrf', #necessary for csrf protection    'django.core.context_processors.static',    'django.contrib.messages.context_processors.messages',    'django.core.context_processors.debug',)
 
-STATICFILES_DIRS = (
-os.path.join('static'),
-os.path.join(BASE_DIR, 'static'),
-)
+# STATICFILES_DIRS = (
+# os.path.join('static'),
+# os.path.join(BASE_DIR, 'static'),
+# )
 STATICFILES_FINDERS = (
 'django.contrib.staticfiles.finders.FileSystemFinder',
 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
