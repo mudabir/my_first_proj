@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'q7(_#63#84hkx5z=v07nh23b(wk_z0c0au-($q@5700etsr=y^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
@@ -137,12 +137,27 @@ USE_TZ = True
 #this is required for admin    'django.core.context_processors.csrf', #necessary for csrf protection    'django.core.context_processors.static',    'django.contrib.messages.context_processors.messages',    'django.core.context_processors.debug',)
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__)) + '/..'
 
-STATIC_ROOT = ""
-if not DEBUG:
-    STATIC_ROOT = os.path.join('static')
+# STATIC_ROOT = ""
+# if not DEBUG:
+#     STATIC_ROOT = os.path.join('static')
+# STATICFILES_DIRS = (
+#     os.path.join('static'),
+#     os.path.join(PROJECT_ROOT, 'static'),)
+# STATICFILES_FINDERS = (
+# 'django.contrib.staticfiles.finders.FileSystemFinder',
+# 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+# )
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/1.6/howto/static-files/
+# STATIC_URL = '/static/'
+#
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 STATICFILES_DIRS = (
-    os.path.join('static'),
-    os.path.join(PROJECT_ROOT, 'static'),)
+os.path.join('static'),
+os.path.join(BASE_DIR, 'static'),
+)
 STATICFILES_FINDERS = (
 'django.contrib.staticfiles.finders.FileSystemFinder',
 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -150,6 +165,6 @@ STATICFILES_FINDERS = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
