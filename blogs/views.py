@@ -13,6 +13,7 @@ from blog.forms import ProductPurchaseForm
 from blog.forms import ImageUploadForm
 from blogs.models import ExampleModel
 from blog.forms import loginForm
+from django.contrib.auth import authenticate
 # from blogs.models import UserRegistration
 # from blog.forms import RegistartionForm
 
@@ -224,14 +225,17 @@ class LoginView(View):
         form = loginForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            Email = data['email']
+            Username = data['username']
             Password = data['password']
             print "post"
-            User.objects.create(
-                email=Email,
-                password=Password
-            )
 
+            user = authenticate(username=Username, password=Password)
+            if user is not None:
+                print user
+            # A backend authenticated the credentials
+            else:
+                print user
+            # No backend authenticated the credentials
             return HttpResponseRedirect('/Users_list/')
         return render(request, 'Blog_templates/login.html', {"form": form})
 
@@ -261,22 +265,6 @@ class RegisterView(View):
 
             return HttpResponseRedirect('/Users_list/')
         return render(request, 'Blog_templates/login.html', {"form": form})
-
-class BlogView(View):
-    def get(self, request):
-            print "get"
-            users = User.objects.all()
-            profiles = UserProfile.objects.all()
-
-            # return render(request,'Blog_templates/Blog.html',{'users':users,"profiles":profiles})
-            return render(request, 'Blog_templates/index.html', {'users': users, "profiles": profiles})
-
-    def post(self, request):
-            # form =  BlogForm(request.POST)
-            id = request.POST.get('user_info')
-            print id
-            User.objects.get(id=id).delete()
-            return HttpResponseRedirect('/list')
 
 
 
