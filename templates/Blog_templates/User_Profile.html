@@ -1,29 +1,33 @@
-<!DOCTYPE>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "Blog_templates/Base.html" %}
+{% block content %}
+    <div class="content-wrapper">
 
-        <h3>User Profiles :</h3>
-    <table class="table dataTable">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
 
-        <thead>
-        <tr>
-            <th>User ID</th>
-            <th>Phone Number</th>
-            <th>Address</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for profile in profiles %}
-            <tr>
-                <td>{{ profile.name }}</td>
-                <td>{{ profile.phone_number }}</td>
-                <td>{{ profile.address }}</td>
-            </tr>
-        {%  endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+                <h3>User Profiles :</h3>
+                <table class="table dataTable">
+
+                    <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for profile in profiles %}
+                        <tr>
+                            <td>{{ profile.name }}</td>
+                            <td>{{ profile.phone_number }}</td>
+                            <td>{{ profile.address }}</td>
+                        </tr>
+                    {%  endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

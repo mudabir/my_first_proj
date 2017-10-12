@@ -14,13 +14,13 @@ from blog.forms import ImageUploadForm
 from blogs.models import ExampleModel
 from blog.forms import loginForm
 from django.contrib.auth import authenticate
-# from blogs.models import UserRegistration
-# from blog.forms import RegistartionForm
+
 
 
 class createUserView(View):
     def get(self,request):
         form = BlogForm()
+
         return render(request,'Blog_templates/Add.html',{"form" : form})
 
     def post(self,request):
@@ -40,7 +40,6 @@ class createUserView(View):
             )
 
             return HttpResponseRedirect('/list/')
-
         return render(request,'Blog_templates/Blog.html',{"form" : form})
 
 class BlogView(View):
@@ -236,7 +235,7 @@ class LoginView(View):
             else:
                 print user
             # No backend authenticated the credentials
-            return HttpResponseRedirect('/Users_list/')
+            return HttpResponseRedirect('/')
         return render(request, 'Blog_templates/login.html', {"form": form})
 
 

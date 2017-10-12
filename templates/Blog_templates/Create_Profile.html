@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "Blog_templates/Base.html" %}
+{% block content %}
+    <div class="content-wrapper">
 
-<head>
-</head>
-<body>
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
 
-<h3>Create User Profile:</h3>
-<form method="post" action="">
-    {{Users.as_p }}
-    <input type="submit" value="save">
-</form>
-</body>
-</html>
+                <h3>Create User Profile:</h3>
+                <form method="post" action="">
+                    {{Users.as_p }}
+                    <input type="submit" value="save">
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

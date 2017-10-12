@@ -1,68 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "Blog_templates/Base.html" %}
+{% block content %}
+    <div class="content-wrapper">
 
-</head>
-<body>
-<a href="{% url "createproductURL" %}"><button>Create Product Purchase</button></a>
-<a href="{% url "productURL" %}"><button>Product Detail</button></a>
-<h3>Product Purchase Details:</h3>
-<table class="table dataTable">
-    <thead>
-    <tr>
-        <th>Image</th>
-        <th>Title</th>
-        <th>Price</th>
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
 
-    </tr>
-    </thead>
-    <tbody>
+                <a href="{% url "createproductURL" %}"><button>Create Product Purchase</button></a>
+                <a href="{% url "productURL" %}"><button>Product Detail</button></a>
+                <h3>Product Purchase Details:</h3>
+                <table class="table dataTable">
+                    <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Price</th>
 
-    {% for product in products %}
-        <tr>
-            <td>{{ product.image }}</td>
-            <td>{{ product.title}}</td>
-            <td>{{ product.price }}</td>
-        </tr>
-    {%  endfor %}
-    </tbody>
-</table>
-</body>
-</html>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.image }}</td>
+                            <td>{{ product.title}}</td>
+                            <td>{{ product.price }}</td>
+                        </tr>
+                    {%  endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}
 
 
 
 
-{#<!DOCTYPE html>#}
-{#<html>#}
-{#<head>#}
-{#</head>#}
-{#<body>#}
-{#<div class="container">#}
-{#    <div id="image">#}
-{#        <h4>Image:</h4>#}
-{#        <img src="images/star_wars.jpg">#}
-{#    </div>#}
-{#    <div id="title">#}
-{#        <h4>Title:</h4>#}
-{#        <input type="text">#}
-{#    </div>#}
-{#    <div id="price">#}
-{#        <h4>Price:</h4>#}
-{#        <input type="text">#}
-{#    </div>#}
-{#    {% for product in products %}#}
-{#        <tr>#}
-{#            <td>{{ product.image }}</td>#}
-{#            <td>{{ product.title }}</td>#}
-{#            <td>{{ product.price }}</td>#}
-{##}
-{#                <form method="post" action="">#}
-{#                    <button type="submit">Submit</button>#}
-{#                </form>#}
-{#        </tr>#}
-{#    {%  endfor %}#}
-{##}
-{#</div>#}
-{#</body>#}
-{#</html>#}
+
+
+
+
+
